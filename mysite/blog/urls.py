@@ -5,5 +5,6 @@ app_name = "blog"
 
 
 urlpatterns = [
-    path('/about',views.AboutView.as_view , name='about')
+    path('/about',views.AboutView.as_view , name='about'),
+    
 ]
