@@ -5,6 +5,12 @@ app_name = "blog"
 
 
 urlpatterns = [
-    path('/about',views.AboutView.as_view , name='about'),
-    
+    path('/',views.PostListView.as_view(), name ='post_list' ),
+    path('/about',views.AboutView.as_view() , name='about'),
+    path('/post/<int:pk>',views.DetailView.as_view() , name='post_detail'),
+    path('/post/new_post',views.PostCreateView.as_view() , name='new_post'),
+    path('/post/edit/<int:pk>',views.PostUpdateView.as_view() , name='post_edit'),
+    path('/post/delete/<int:pk>',views.PostDeleteView.as_view() , name='post_delete'),
+    path('/drafts/',views.DraftListView.as_view() , name='post_draft_list'),
+
 ]
