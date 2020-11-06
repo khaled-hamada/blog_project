@@ -6,6 +6,10 @@
   margin-bottom: 10px;
 }
 
+.centerstage{
+  margin: 0 auto;
+}
+
 .bigbrand{
    font-size: 1.5em;
 }

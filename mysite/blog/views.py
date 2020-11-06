@@ -6,7 +6,7 @@ from django.views.generic import  (TemplateView , ListView , DetailView ,
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
-feom django.utils import timezone
+from django.utils import timezone
 #for class based views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 
 
 class AboutView(TemplateView):
-    template_name = 'about.html'
+    template_name = 'blog/about.html'
 
 
 
@@ -24,7 +24,7 @@ class PostListView(ListView):
 
     def get_queryset(self):
         ## note __ after the field name is a condiotion or expression or it can be a function call
-        return Post.objects.filter(published_date_lte = timezone.now()).order_by('-published_date'))
+        return Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
 
 
 class PostDetailView(DetailView):
