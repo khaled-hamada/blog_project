@@ -8,7 +8,7 @@
     <div class="date postdate">
         {{post.published_date}}
     </div>
-  {% else %}
+  {% elif user.is_authenticated %}
     <a class="btn btn-default" href="{%url 'blog:post_publish' pk=post.pk %}"></a>
 
   {% endif %}
@@ -50,7 +50,8 @@
               <span class="fa fa-remove"></span>
             </a>
         {% endif %}
-        {# if there are no comments at all for this post  #}
+        {# if there are no comments at all for this post  , this is related to the for statement
+        if its empty then execute statements in the empty block  #}
         {% empty %}
         <p >No Comments</p>
       {% endfor %}
