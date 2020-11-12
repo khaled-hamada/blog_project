@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404 , redirect
 from django.urls import reverse_lazy
 from django.views.generic import  (TemplateView , ListView , DetailView ,
-                                    CreateView, DetailView , UpdateView,
+                                    CreateView, DeleteView , UpdateView,
                                     )
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -48,7 +48,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         model = Post
 
 
-class PostDeleteView(LoginRequiredMixin, DetailView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     ## the idea behind reverse_lazy function it waits until you successfully deletes the dedicated post
     success_url = reverse_lazy('blog:post_list')

@@ -22,7 +22,7 @@
     <a class="btn btn-primary" href="{%url 'blog:post_edit' pk=post.pk %}">
       <span class="fa fa-pencil"></span>
     </a>
-    <a class="btn btn-primary" href="{%url 'blog:post_delete' pk=post.pk %}">
+    <a class="btn btn-danger" href="{%url 'blog:post_delete' pk=post.pk %}">
       <span class="fa fa-remove"></span>
     </a>
   {% endif %}
@@ -34,7 +34,7 @@
       {% for comment in  post.comments.all %}
         <br>
         {% if comment.approved %}
-          {{comment.created_date|date:"D M Y"}}
+          {{comment.created_date|date:"D, M, Y"}}
           <p>{{comment.text|safe|linebreaks}} </p>
           <p>Posted By: {{comment.author}}</p>
           <hr>
@@ -43,11 +43,11 @@
         {% elif user.is_authenticated  %}
         <hr>
               {# approve comment #}
-            <a class="btn btn-primary" href="{%url 'blog:comment_approve' pk=comment.pk %}">
+            <a class="btn btn-primary loader" href="{%url 'blog:comment_approve' pk=comment.pk %}">
               <span class="fa fa-check"></span>
             </a>
             {# or, remove comment #}
-            <a class="btn btn-danger" href="{%url 'blog:comment_remove' pk=comment.pk %}">
+            <a class="btn btn-danger loader" href="{%url 'blog:comment_remove' pk=comment.pk %}">
               <span class="fa fa-remove"></span>
             </a>
         {% endif %}
